@@ -5,18 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Casa Mia</title>
 <meta name="description" content="Follow us, visit the store, message us.">
-<meta name="theme-color" content="#14201A">
+<meta name="theme-color" content="#2A1638">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --field:#14201A; --field-2:#1B2B23;
-    --paper:#ECE8E0; --paper-2:#E1DCD1;
-    --ink:#16130F; --ink-soft:#5B564C;
-    --line:#C9C3B6; --brass:#8C6A2F;
-    --serif:"Bodoni Moda","Didot","Bodoni 72",Georgia,serif;
-    --sans:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    --field:#2A1638; --field-2:#3E2050;
+    --paper:#F3EEE6; --paper-2:#F0DCE6;
+    --ink:#3A1E4A; --ink-soft:#7A6285;
+    --line:#E0CBD9; --brass:#D6427F;
+    --serif:"Playfair Display","Didot","Bodoni 72",Georgia,serif;
+    --sans:"Jost",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   }
   *{box-sizing:border-box;margin:0}
   html{height:100%}
@@ -37,7 +37,7 @@
   .tag::before{content:"";position:absolute;top:22px;left:50%;width:18px;height:18px;margin-left:-9px;
     border-radius:50%;background:var(--field);box-shadow:inset 0 2px 3px rgba(0,0,0,.6),0 0 0 3px var(--paper-2)}
   .tag::after{content:"";position:absolute;bottom:calc(100% - 31px);left:50%;width:2px;height:88px;margin-left:-1px;
-    background:linear-gradient(var(--field),#9d7d3f);}
+    background:linear-gradient(var(--field),var(--brass));}
   @keyframes swing{
     0%{transform:rotate(-3.5deg)} 30%{transform:rotate(2.2deg)} 55%{transform:rotate(-1.2deg)}
     80%{transform:rotate(.5deg)} 100%{transform:rotate(0)}
@@ -70,7 +70,7 @@
   }
   button.share:hover{background:var(--ink);color:var(--paper)}
   dialog{border:0;border-radius:14px;padding:26px;background:var(--paper);color:var(--ink);max-width:340px;width:calc(100% - 32px);text-align:center}
-  dialog::backdrop{background:rgba(10,16,13,.7)}
+  dialog::backdrop{background:rgba(30,12,46,.72)}
   dialog h2{font-family:var(--serif);font-size:1.5rem;font-weight:600}
   dialog p{color:var(--ink-soft);font-size:.9rem;margin:6px 0 16px}
   #qr{width:100%;max-width:260px;height:auto;border-radius:8px;background:#fff;image-rendering:pixelated}
@@ -161,7 +161,7 @@ function drawQR(){
   const q = qrcode(0,"H"); q.addData(location.href.split("#")[0]); q.make();
   const n = q.getModuleCount(), scale = 10, pad = 3, size = (n+pad*2)*scale;
   cv.width = cv.height = size; const c = cv.getContext("2d");
-  c.fillStyle="#fff"; c.fillRect(0,0,size,size); c.fillStyle="#16130F";
+  c.fillStyle="#fff"; c.fillRect(0,0,size,size); c.fillStyle="#3A1E4A";
   for(let r=0;r<n;r++)for(let k=0;k<n;k++) if(q.isDark(r,k)) c.fillRect((k+pad)*scale,(r+pad)*scale,scale,scale);
 }
 document.getElementById("open-qr").addEventListener("click",()=>{drawQR();dlg.showModal();});
